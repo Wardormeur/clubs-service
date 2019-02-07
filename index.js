@@ -17,6 +17,7 @@ process.on('uncaughtException', logger.error);
 
 app.use('/member', memberships.members);
 app.use('/memberships', memberships.memberships);
+app.get('/ping', (req, res) => res.send(204));
 
 app.use((err, req, res, next) => {
   logger.error(err);
