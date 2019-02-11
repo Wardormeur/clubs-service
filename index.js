@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 process.on('unhandledRejection', err => logger.error(err));
 process.on('uncaughtException', logger.error);
 
-app.use('/member', memberships.members);
+app.use('/members', memberships.members);
 app.use('/memberships', memberships.memberships);
 app.get('/ping', (req, res) => res.send(204));
 
