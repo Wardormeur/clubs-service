@@ -1,6 +1,7 @@
 const Knex = require('knex');
 const proxy = require('proxyquire');
 const setupClubs = require('./setupClubs');
+const setupLeads = require('./setupLeads');
 
 const { knexSnakeCaseMappers, Model } = require('objection');
 
@@ -34,6 +35,7 @@ before(async () => {
     name,
   });
   await setupClubs(db);
+  await setupLeads(db);
 
   global.app = proxy('../../../index', {
     './setup-db': () => {

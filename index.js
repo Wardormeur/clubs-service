@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('./util/pino-stream');
 const memberships = require('./memberships/routes');
+const leads = require('./leads/routes');
 const setupDb = require('./setup-db');
 
 setupDb();
@@ -17,6 +18,7 @@ process.on('uncaughtException', logger.error);
 
 app.use('/members', memberships.members);
 app.use('/memberships', memberships.memberships);
+app.use('/leads', leads);
 app.get('/ping', (req, res) => res.send(204));
 
 app.use((err, req, res, next) => {
