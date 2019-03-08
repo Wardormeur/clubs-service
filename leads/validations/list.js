@@ -7,6 +7,11 @@ module.exports = [
       in: ['query'],
       isUUID: true,
     },
+    deleted: {
+      in: ['query'],
+      isInt: true,
+      optional: true,
+    },
   }),
   ValidationHelper.handleErrors,
 ];
