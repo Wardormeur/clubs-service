@@ -21,7 +21,7 @@ describe('integration:member:delete', () => {
       .expect(204);
   });
   it('should return 404 if the id doesn\'t exists', async () => {
-    const res = await request(app)
+    await request(app)
       .delete('/members/a5d60790-17c4-4a86-a023-d1558b666666')
       .set('Accept', 'application/json')
       .expect(404);

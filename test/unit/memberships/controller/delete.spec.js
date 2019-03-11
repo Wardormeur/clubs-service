@@ -24,9 +24,6 @@ describe('memberships/controller:delete', () => {
   });
   describe('hardDelete', () => {
     it('should delete a single membership', async () => {
-      const cascade = false;
-      const $query = sandbox.stub().returns(queryBuilder);
-      const hasChildren = sandbox.stub().returns(true);
       await memberController.delete({ id: 'userId1' }, queryBuilder);
       expect(queryBuilder.where).to.have.been.calledOnce.and.calledWith({ id: 'userId1' });
       expect(queryBuilder.delete).to.have.been.calledOnce;
@@ -35,8 +32,6 @@ describe('memberships/controller:delete', () => {
   });
   describe('softDelete', () => {
     it('should delete a single membership', async () => {
-      const $query = sandbox.stub().returns(queryBuilder);
-      const hasChildren = sandbox.stub().returns(true);
       await memberController.softDelete({ id: 'userId1' }, queryBuilder);
       expect(queryBuilder.where).to.have.been.calledOnce.and.calledWith({ id: 'userId1' });
       expect(queryBuilder.softDelete).to.have.been.calledOnce;
