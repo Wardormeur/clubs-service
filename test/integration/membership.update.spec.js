@@ -1,6 +1,6 @@
 const request = require('supertest');
 
-describe.only('integration:membership:update', () => {
+describe('integration:membership:update', () => {
   let app;
 
   beforeEach(() => {

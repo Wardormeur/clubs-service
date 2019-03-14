@@ -1,6 +1,6 @@
 const request = require('supertest');
 
-describe.only('integration:membership:create', () => {
+describe('integration:membership:create', () => {
   let app;
 
   beforeEach(() => {
