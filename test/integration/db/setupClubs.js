@@ -32,4 +32,13 @@ module.exports = async (db) => {
     dojo_id: 'ddeb47d9-1a58-42da-ad64-ef51ea115c23',
     deleted: 0,
   });
+  // Modifying membership
+  await db('cd_usersdojos').insert({
+    id: '463e716d-e2c6-42f6-9809-dc6236f0e480',
+    user_id: '90a1bf7a-b840-490f-825f-c98a881f2f55',
+    dojo_id: 'a3ed8f42-36f6-4ff6-aac2-8d52a788d3c2',
+    deleted: 0,
+    userPermissions: [],
+    userTypes: ['parent-guardian'],
+  });
 };

@@ -8,7 +8,9 @@ memberRouter.delete('/:id', validations.delete, handlers.delete);
 
 const membershipRouter = express.Router();
 // For membershipId
+membershipRouter.post('/', validations.create, handlers.create);
 membershipRouter.delete('/:id', validations.delete, handlers.delete);
+membershipRouter.post('/:id/roles', validations.createRole, handlers.createRole);
 module.exports = {
   members: memberRouter,
   memberships: membershipRouter,
