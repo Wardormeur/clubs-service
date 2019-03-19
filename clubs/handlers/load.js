@@ -6,7 +6,7 @@ module.exports = [
   builderHandler(ClubModel),
   async (req, res, next) => {
     try {
-      return res.send(await clubsController.load(req.params.id, res.locals.qb));
+      return res.send(await clubsController.load(req.params.id, req.query.related, res.locals.qb));
     } catch (e) {
       next(e);
     }

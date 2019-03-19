@@ -7,6 +7,15 @@ module.exports = [
       in: ['params'],
       isUUID: true,
     },
+    related: {
+      in: ['query'],
+      optional: true,
+      custom: {
+        options: (value) => {
+          return ['owner'].indexOf(value) > -1;
+        },
+      },
+    },
   }),
   ValidationHelper.handleErrors,
 ];

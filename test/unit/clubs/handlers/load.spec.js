@@ -22,6 +22,7 @@ describe('clubs/handlers:load', () => {
     sandbox.reset();
     req = {
       params: {},
+      query: {},
     };
     res = {
       locals: {
@@ -38,7 +39,21 @@ describe('clubs/handlers:load', () => {
     clubsController.load.resolves({ id: 'd1', name: 'Test Dojo1' });
     await handlers[1](req, res, next);
     expect(clubsController.load).to.have.been.calledOnce.and
-      .calledWith('d1');
+      .calledWith('d1', undefined);
+    expect(next).to.not.have.been.called;
+    expect(res.send).to.have.been.calledWith({ id: 'd1', name: 'Test Dojo1' });
+  });
+  it('should pass down the related query param', async () => {
+    req.params = {
+      id: 'd1',
+    };
+    req.query = {
+      related: 'owner',
+    };
+    clubsController.load.resolves({ id: 'd1', name: 'Test Dojo1' });
+    await handlers[1](req, res, next);
+    expect(clubsController.load).to.have.been.calledOnce.and
+      .calledWith('d1', 'owner');
     expect(next).to.not.have.been.called;
     expect(res.send).to.have.been.calledWith({ id: 'd1', name: 'Test Dojo1' });
   });
