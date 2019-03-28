@@ -3,8 +3,8 @@ const ValidationHelper = require('../../util/ValidationHelper');
 
 module.exports = [
   checkSchema({
-    dojoId: {
-      in: ['body'],
+    id: {
+      in: ['params'],
       isUUID: true,
     },
     userId: {
