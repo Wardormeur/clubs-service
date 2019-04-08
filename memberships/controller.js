@@ -3,6 +3,11 @@ const { MembershipExists } = require('./errors');
 
 class MembershipsController {
   static async create(userId, dojoId, userType) {
+    // If only we had a unique clause on those 2 fields...
+    const currentMembership = await MemberModel.query().findOne({ userId, dojoId });
+    if (currentMembership) {
+      throw MembershipExists;
+    }
     const membership = new MemberModel(userId, dojoId, userType);
     return membership.$query().insert().returning('*');
   }
